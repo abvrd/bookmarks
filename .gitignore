@@ -1,0 +1,13 @@
+.tmp
+
+client/node_modules
+client/dist
+client/.tmp
+client/.sass-cache
+
+server/node_modules
+server/dist
+server/.tmp
+server/config/env/*
+!server/config/env/env-example.js
+!server/config/env/index.js
