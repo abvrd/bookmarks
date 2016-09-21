@@ -15,6 +15,7 @@ class BookmarkActions {
     );
   }
 
+  // fetch requires to write a custom error handler
   checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
       return response;
@@ -49,7 +50,6 @@ class BookmarkActions {
           description: bookmark.description
         })
       })
-        // .then(this.checkStatus)
         .then((response) => response.json())
         .then((bookmark) => {
           if(method == 'POST') {

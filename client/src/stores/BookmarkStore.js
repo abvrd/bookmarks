@@ -35,6 +35,7 @@ class BookmarkStore {
   onAddBookmarkSuccess(newBookmark) {
     let newCategory = true
     let bookmarks = this.bookmarks;
+    // adding the new Bookmark to the existing list
     for(let category of bookmarks) {
       if(category.name == newBookmark.category) {
         category.bookmarks.push(newBookmark);
@@ -42,7 +43,7 @@ class BookmarkStore {
         break;
       }
     }
-
+    // adding a new category block if necessary
     if(newCategory) {
       bookmarks.push({
         _id: newBookmark._id + '_cat',
@@ -65,6 +66,7 @@ class BookmarkStore {
   onDeleteBookmarkSuccess(bookmarkDeleted) {
     let bookmarks = this.bookmarks;
     let deleteCatgory = false;
+    // deleting former bookmark
     for(let category of bookmarks) {
       if(category.name == bookmarkDeleted.category) {
         category.bookmarks = _.remove(category.bookmarks, (item) => {
@@ -73,7 +75,7 @@ class BookmarkStore {
         break;
       }
     }
-
+    // deleting the category block if empty
     bookmarks = _.remove(bookmarks, (item) => {
       return item.bookmarks.length == 0;
     });
